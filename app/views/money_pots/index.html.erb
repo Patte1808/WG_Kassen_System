@@ -1,0 +1,11 @@
+<% if @money_pots.empty? %>
+  <h1>There are no active money pots</h1>
+<% else %>
+  <h1>List of current active Pots</h1>
+<% end %>
+
+<ul>
+<% @money_pots.each do |money_pot| %>
+  <li><%= link_to money_pot.title %></li>
+<% end %>
+</ul>
