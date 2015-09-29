@@ -12,6 +12,9 @@
         <p>
           Active since <%= @money_pot.created_at.strftime("%d-%m-%Y (%H:%M)") %>
         </p>
+        <p>
+          Created by <i><%= @money_pot.user.email %></i>
+        </p>
       </div>
       <div class="card-action white-text">
         Current value: <%= number_to_currency(@transactions_value) %>
@@ -27,7 +30,8 @@
       <% else %>
         <% @transactions.limit(5).each do |transaction| %>
           <a class="collection-item <%= transaction.value >= 0 ? 'green lighten-3' : 'red lighten-3' %>">
-            Transaction for <%= number_to_currency(transaction.value) %> (<%= transaction.comment %>) - commited at <%= transaction.created_at.strftime("%d-%m-%Y (%H:%M)")  %>
+            <%= transaction.user.email %> logged at <%= transaction.created_at.strftime("%d-%m-%Y (%H:%M)")  %> a
+            transaction for <%= number_to_currency(transaction.value) %> (<%= transaction.comment %>)
           </a>
         <% end %>
       <% end %>

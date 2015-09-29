@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   root 'money_pots#index'
 
   resources :money_pots do
