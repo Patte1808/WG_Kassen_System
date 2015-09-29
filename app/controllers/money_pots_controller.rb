@@ -18,8 +18,27 @@ class MoneyPotsController < ApplicationController
     end
   end
 
+  def show
+    @money_pot = get_current_money_pot
+  end
+
+  def edit
+    @money_pot = get_current_money_pot
+  end
+
+  def update
+    money_pot = get_current_money_pot
+    money_pot.update!(money_pot_params)
+
+    redirect_to money_pot
+  end
+
   private
   def money_pot_params
     params.require(:money_pot).permit(:title, :value)
+  end
+
+  def get_current_money_pot
+    MoneyPot.find(params[:id])
   end
 end
