@@ -20,6 +20,9 @@ class MoneyPotsController < ApplicationController
 
   def show
     @money_pot = get_current_money_pot
+    @transaction = Transaction.new
+    @transactions = @money_pot.transactions.order("created_at DESC")
+    @transactions_value = @transactions.sum(:value)
   end
 
   def edit

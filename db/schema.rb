@@ -11,14 +11,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150929160906) do
+ActiveRecord::Schema.define(version: 20150929172502) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "money_pots", force: :cascade do |t|
-    t.decimal  "value"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean  "isActive"
     t.string   "title"
   end
+
+  create_table "transactions", force: :cascade do |t|
+    t.string   "comment"
+    t.decimal  "value"
+    t.integer  "money_pot_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "transactions", ["money_pot_id"], name: "index_transactions_on_money_pot_id", using: :btree
 
 end

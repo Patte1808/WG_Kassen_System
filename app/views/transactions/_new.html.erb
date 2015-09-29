@@ -1,0 +1,5 @@
+<%= simple_form_for [@money_pot, @transaction] do |f| %>
+  <%= f.input :comment %>
+  <%= f.input :value %>
+  <%= f.button :submit, "New transaction" %>
+<% end %>

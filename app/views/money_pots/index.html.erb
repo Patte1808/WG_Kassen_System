@@ -6,6 +6,6 @@
 
 <ul>
 <% @money_pots.each do |money_pot| %>
-  <li><%= link_to money_pot.title %></li>
+  <li><%= link_to money_pot.title, money_pot %></li>
 <% end %>
 </ul>

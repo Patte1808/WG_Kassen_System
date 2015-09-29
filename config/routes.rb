@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   root 'money_pots#index'
 
-  resources :money_pots
+  resources :money_pots do
+    resources :transactions
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
